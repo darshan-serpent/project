@@ -5,9 +5,6 @@
 Project Work Breakdown Structure
 ================================
 
-Project Scope
--------------
-
 * The hierarchy of a project is considered the WBS
   (Work Breakdown Structure)
 * The analytic accounts in the project hierarchies are considered WBS
@@ -17,7 +14,7 @@ Project Scope
   project
 * The complete WBS path name is shown in the analytic account and in the
   project
-* The WBS paths are concatenated with /
+* The WBS paths are concatenated with each other
 * It is possible to search projects by complete WBS path code & name
 * It is possible to search tasks by project complete WBS path code & name
 * The WBS components can be classified as project, phase, deliverable,

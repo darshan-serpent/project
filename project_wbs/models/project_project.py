@@ -8,7 +8,6 @@
 
 import time
 from datetime import datetime, date
-from openerp.tools.translate import _
 from openerp import api, fields, models, _
 
 
