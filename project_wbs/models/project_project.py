@@ -196,12 +196,11 @@ class Project(models.Model):
                 ).strftime('%Y-%m-%d')
             self = self.with_context(copy=True)
             new_id = proj.copy(default={
-                    'name': _("%s") % proj.name,
-                    'state': 'open',
-                    'date_start': new_date_start,
-                    'date': new_date_end,
-                    'parent_id': parent_id
-                })
+                'name': _("%s") % proj.name,
+                'state': 'open',
+                'date_start': new_date_start,
+                'date': new_date_end,
+                'parent_id': parent_id})
             result.append(new_id)
             child_ids = self.search(
                 [('parent_id', '=', proj.analytic_account_id.id)])
@@ -249,18 +248,17 @@ class Project(models.Model):
             )
             for child_project_id in child_project_ids:
                 project_ids.append(child_project_id.id)
-            def_parent_id = project.analytic_account_id and \
-                            project.analytic_account_id.id or \
-                            False
-            def_partner_id = project.partner_id and \
-                             project.partner_id.id or \
-                             False
-            default_user_id = project.user_id and project.user_id.id or False
-            self = self.with_context(default_parent_id=def_parent_id,
-                                     default_partner_id=def_partner_id,
-                                     default_user_id=default_user_id)
-        domain.append(('id', 'in', project_ids))
-        res.update(domain=domain, nodestroy=False)
+            if project_ids:
+                def_parent_id = project.analytic_account_id and \
+                    project.analytic_account_id.id or False
+                def_partner_id = project.partner_id and \
+                    project.partner_id.id or False
+                default_user_id = project.user_id and project.user_id.id or False
+                self = self.with_context(default_parent_id=def_parent_id,
+                                         default_partner_id=def_partner_id,
+                                         default_user_id=default_user_id)
+                domain.append(('id', 'in', project_ids))
+                res.update(domain=domain, nodestroy=False)
         return res
 
     @api.multi

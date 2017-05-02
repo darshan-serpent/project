@@ -48,7 +48,7 @@
                     <attribute name="colors">#555487:account_class == 'phase';#807FA2:account_class == 'deliverable';</attribute>
                     <attribute name="default_order">complete_wbs_code</attribute>
                 </xpath>
-                <xpath expr='//field[@name="sequence"]' position="replace">
+                <xpath expr='//field[@name="sequence"]' position="after">
                     <button string="Parent WBS element"
                         name="action_open_parent_tree_view"
                         type="object"
@@ -97,7 +97,7 @@
         </record>
 
         <!--FILTER group by-->
-        <record id="view_project_project_filter" model="ir.ui.view">
+        <record id="view_project_project_group_filter" model="ir.ui.view">
             <field name="name">project.project.select</field>
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.view_project_project_filter"/>
@@ -151,7 +151,7 @@
                             <button name="%(create_wbs_element)d"
                               string="Create child WBS element"
                               type="action"
-                              context="{'default_parent_id': analytic_account_id,'default_partner_id': partner_id,'default_user_id': user_id}"/>
+                              context="{'default_parent_id':analytic_account_id,'default_partner_id':partner_id,'default_user_id':user_id}"/>
                         </group>
                         <tree string="Work Breakdown Structure" editable="bottom">
                             <field name="project_child_complete_ids" nolabel="1" widget="one2many_list"/>

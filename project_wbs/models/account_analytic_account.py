@@ -5,7 +5,7 @@
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from openerp import api, fields, models, _
+from openerp import api, fields, models
 
 
 class AccountAnalyticAccount(models.Model):
@@ -102,15 +102,15 @@ class AccountAnalyticAccount(models.Model):
 
     @api.model
     def _default_parent(self):
-        return self.env.context.get('parent_id', False)
+        return self.env.context.get('parent_id', None)
 
     @api.model
     def _default_partner(self):
-        return self.env.context.get('partner_id', False)
+        return self.env.context.get('partner_id', None)
 
     @api.model
     def _default_user(self):
-        return self.env.context.get('user_id', False)
+        user = self.env.context.get('user_id', self.env.user)
 
     wbs_indent = fields.Char(
         compute=_wbs_indent_calc,

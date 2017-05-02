@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <record id="view_account_analytic_account_list" model="ir.ui.view">
             <field name="name">account.analytic.account.list</field>
             <field name="model">account.analytic.account</field>
@@ -9,7 +8,10 @@
             <field eval="8" name="priority"/>
             <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
             <field name="arch" type="xml">
-                <field name="code" position="replace"/>
+                <field name="code" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+
                 <field name="partner_id" position="after">
                     <field name="code"/>
                     <field name="date_start"/>
@@ -57,7 +59,7 @@
             </field>
         </record>
 
-        <record id="view_account_analytic_account_search" model="ir.ui.view">
+        <record id="view_account_analytic_account_search2" model="ir.ui.view">
             <field name="name">account.analytic.account.search</field>
             <field name="model">account.analytic.account</field>
             <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
