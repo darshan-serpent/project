@@ -253,7 +253,8 @@ class Project(models.Model):
                     project.analytic_account_id.id or False
                 def_partner_id = project.partner_id and \
                     project.partner_id.id or False
-                default_user_id = project.user_id and project.user_id.id or False
+                default_user_id = \
+                    project.user_id and project.user_id.id or False
                 self = self.with_context(default_parent_id=def_parent_id,
                                          default_partner_id=def_partner_id,
                                          default_user_id=default_user_id)

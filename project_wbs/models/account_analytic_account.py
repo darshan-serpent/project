@@ -110,7 +110,7 @@ class AccountAnalyticAccount(models.Model):
 
     @api.model
     def _default_user(self):
-        user = self.env.context.get('user_id', self.env.user)
+        return self.env.context.get('user_id', self.env.user)
 
     wbs_indent = fields.Char(
         compute=_wbs_indent_calc,
